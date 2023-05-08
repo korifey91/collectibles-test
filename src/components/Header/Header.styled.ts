@@ -1,4 +1,3 @@
-import CollectbaseLogo from '@public/collectbase-logo.svg';
 import Link from '@src/components/Link';
 import { styled } from '@src/styles/styled';
 

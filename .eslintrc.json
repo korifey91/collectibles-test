@@ -26,6 +26,12 @@
     "import/no-unresolved": "error",
     "import/prefer-default-export": "off",
     "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
+    "jsx-a11y/label-has-associated-control": [1, {
+      "labelComponents": ["SearchInputContainer"],
+      "controlComponents": ["Input"],
+      "depth": 3
+    }],
+    "no-restricted-exports": "off",
     "import/order": [
       "error",
       {
