@@ -4,16 +4,26 @@ import { Provider } from 'react-redux';
 
 import type { AppProps } from 'next/app';
 
+import StyledThemeProvider from '@src/components/StyledThemeProvider';
+
 import store from '../store';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps) {
   return (
     <Provider store={store}>
-      <main className={inter.className}>
-        <Component {...pageProps} />
-      </main>
+      <StyledThemeProvider>
+        <main className={inter.className}>
+          <Component {...pageProps} />
+        </main>
+      </StyledThemeProvider>
     </Provider>
   );
 }
