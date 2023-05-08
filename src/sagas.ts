@@ -2,7 +2,7 @@ import {
   all, call, spawn,
 } from 'redux-saga/effects';
 
-import searchSaga from '@/features/search/search.saga';
+import searchSaga from '@features/search/search.saga';
 
 function* rootSaga() {
   const sagas = [

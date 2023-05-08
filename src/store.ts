@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
-import searchSlice from '@/features/search/search.slice';
+import searchSlice from '@features/search/search.slice';
 
 import rootSaga from './sagas';
 

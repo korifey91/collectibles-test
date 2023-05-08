@@ -1,6 +1,6 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-import axiosInstance, { type AxiosError, type AxiosResponse } from '@/axiosInstance';
+import axiosInstance, { type AxiosError, type AxiosResponse } from '@src/axiosInstance';
 
 import { search } from './search.actions';
 import { getSuitesError, getSuitesSuccess } from './search.slice';
