@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import Logo from '@public/collectbase-logo.svg';
+import Header from '@src/components/Header';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Collectibles assessment app</title>
       </Head>
-      <Logo />
+      <Header />
     </>
   );
 }

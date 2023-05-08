@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
 
 import StyledThemeProvider from '@src/components/StyledThemeProvider';
+import { CssBaseline } from '@src/styles/styled';
 
 import store from '../store';
 
@@ -20,6 +21,7 @@ export default function App({
   return (
     <Provider store={store}>
       <StyledThemeProvider>
+        <CssBaseline />
         <main className={inter.className}>
           <Component {...pageProps} />
         </main>
