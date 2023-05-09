@@ -32,6 +32,7 @@
       "depth": 3
     }],
     "no-restricted-exports": "off",
+    "react/require-default-props": "off",
     "import/order": [
       "error",
       {
