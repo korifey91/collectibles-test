@@ -104,5 +104,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        sizeMedium: {
+          height: 36,
+          width: 36,
+        },
+      },
+    },
   },
 });
