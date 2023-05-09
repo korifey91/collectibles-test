@@ -63,4 +63,29 @@ export const theme = createTheme({
       xl: 1536,
     },
   },
+  components: {
+    MuiChip: {
+      styleOverrides: {
+        labelSmall: {
+          paddingLeft: 6,
+          paddingRight: 6,
+        },
+        sizeSmall: {
+          height: 22,
+        },
+      },
+    },
+    MuiStack: {
+      defaultProps: {
+        useFlexGap: true,
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          borderColor: '#EAEAEB',
+        },
+      },
+    },
+  },
 });
