@@ -1,4 +1,4 @@
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { call, put, takeLeading } from 'redux-saga/effects';
 
 import axiosInstance, { type AxiosError, type AxiosResponse } from '@src/axiosInstance';
 
@@ -18,5 +18,5 @@ function* getSuites() {
 }
 
 export default function* searchSaga() {
-  yield takeEvery(search.toString(), getSuites);
+  yield takeLeading(search.toString(), getSuites);
 }
