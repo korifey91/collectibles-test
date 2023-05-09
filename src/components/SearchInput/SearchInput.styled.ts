@@ -7,11 +7,17 @@ export const SearchInputContainer = styled('label')`
   justify-content: center;
   align-items: center;
   gap: 6px;
-  
+
   background: #FFFFFF;
   border: 1px solid #EAEAEB;
   box-shadow: 0 5px 20px rgba(18, 0, 47, 0.02);
   border-radius: 90px;
+
+  :hover {
+    border: 1px solid #636363;
+  }
+
+  transition: 0.2s;
 `;
 
 export const SearchInputStyled = styled(Input)`
