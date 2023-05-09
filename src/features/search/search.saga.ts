@@ -17,7 +17,10 @@ function* getSuites() {
     const response: AxiosResponse<SuitesResponse> = yield call(
       getAllSuites,
     );
-    yield put(getSuitesSuccess(response.data.suites));
+    yield put(getSuitesSuccess({
+      suites: response.data.suites,
+      totalCount: response.data.meta.total_cards_count,
+    }));
   } catch (error) {
     yield put(getSuitesError((error as AxiosError).message));
   }
