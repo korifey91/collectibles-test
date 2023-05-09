@@ -87,5 +87,22 @@ export const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: '#15181E',
+        },
+        outlinedPrimary: {
+          backgroundColor: '#4B10C9',
+          color: '#FFFFFF',
+          ...getTextStyles(600, 15, '24px'),
+        },
+        outlinedSecondary: {
+          backgroundColor: '#F2F2F2',
+          color: '#15181E',
+          ...getTextStyles(600, 15, '24px'),
+        },
+      },
+    },
   },
 });
