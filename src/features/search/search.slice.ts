@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import { getSearchQuery } from '@features/search/search.helpers';
+
 import { Suites } from './search.types';
 
 interface SearchSliceState {
@@ -21,12 +23,10 @@ const searchSlice = createSlice({
       searchQuery: '',
     } as SearchSliceState;
 
-    if (global.location) {
-      const searchParams = new URLSearchParams(window.location.search);
-      const searchQuery = searchParams.get('query');
-      if (searchQuery) {
-        initialState.searchQuery = searchQuery;
-      }
+    const initialQuery = getSearchQuery();
+
+    if (initialQuery) {
+      initialState.searchQuery = initialQuery;
     }
 
     return initialState;

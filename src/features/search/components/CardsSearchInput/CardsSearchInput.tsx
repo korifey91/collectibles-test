@@ -5,9 +5,9 @@ import React, {
 import { useUpdateEffect } from 'react-use';
 
 import SearchInput from '@components/SearchInput';
-import { getQuery } from '@features/search/search.selectors';
+import { getSearchQuery } from '@features/search/search.helpers';
 import { setQuery as setStoreQuery } from '@features/search/search.slice';
-import { useAppDispatch, useAppSelector } from '@src/hooks';
+import { useAppDispatch } from '@src/hooks';
 
 import {
   CardsSearchInputContainer,
@@ -17,9 +17,8 @@ function CardsSearchInput() {
   const router = useRouter();
 
   const dispatch = useAppDispatch();
-  const initialQuery = useAppSelector(getQuery);
 
-  const [query, setQuery] = useState(initialQuery);
+  const [query, setQuery] = useState(getSearchQuery);
 
   const deferredQuery = useDeferredValue(query);
 
