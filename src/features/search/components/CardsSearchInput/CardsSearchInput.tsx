@@ -25,7 +25,7 @@ function CardsSearchInput() {
   );
 
   useUpdateEffect(() => {
-    dispatch(setStoreQuery(deferredQuery));
+    dispatch(setStoreQuery(deferredQuery.trim()));
   }, [deferredQuery]);
 
   return (
