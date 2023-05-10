@@ -1,20 +1,28 @@
-import React, { ChangeEventHandler, memo, useCallback } from 'react';
+import React, {
+  ChangeEventHandler, memo, useCallback, useDeferredValue, useState,
+} from 'react';
+import { useUpdateEffect } from 'react-use';
 
 import SearchInput from '@components/SearchInput';
-import { setQuery } from '@features/search/search.slice';
-import { useAppDispatch, useAppSelector } from '@src/hooks';
+import { setQuery as setStoreQuery } from '@features/search/search.slice';
+import { useAppDispatch } from '@src/hooks';
 
 function CardsSearchInput() {
   const dispatch = useAppDispatch();
+  const [query, setQuery] = useState('');
 
-  const query = useAppSelector((state) => state.search.searchQuery);
+  const deferredQuery = useDeferredValue(query);
 
   const handleSearch = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => {
-      dispatch(setQuery(value));
+      setQuery(value);
     },
-    [dispatch],
+    [],
   );
+
+  useUpdateEffect(() => {
+    dispatch(setStoreQuery(deferredQuery));
+  }, [deferredQuery]);
 
   return (
     <SearchInput
