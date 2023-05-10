@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 import { AppState } from '@src/store';
 
-import { Suites } from './search.types';
+import { SuiteInStore } from './search.types';
 
 export const selectQuery = (state: AppState) => state.search.searchQuery;
 export const selectSuites = (state: AppState) => state.search.suites;
@@ -11,35 +11,38 @@ export const selectSelectedCards = (state: AppState) => state.search.selectedCar
 export const selectActiveTab = (state: AppState) => state.search.activeTab;
 export const selectSelectedCardsCount = (state: AppState) => state.search.selectedCards.length;
 
+const getFilteredSuites = (query: string, suites: SuiteInStore[]) => {
+  if (!query.length) return suites;
+
+  const result: SuiteInStore[] = [];
+
+  suites.forEach((suite) => {
+    const found = suite.seo_suites.filter(
+      (card) => card.name.toLowerCase().includes(query.toLowerCase()),
+    );
+    if (found.length) {
+      result.push({
+        ...suite,
+        seo_suites: found,
+      });
+    }
+  });
+
+  return result;
+};
+
 export const selectFoundSuiteWithCards = createSelector(
   selectQuery,
   selectSuites,
-  (query, suites) => {
-    if (!query.length) return suites;
-
-    const result: Suites[] = [];
-
-    suites.forEach((suite) => {
-      const found = suite.seo_suites.filter(
-        (card) => card.name.toLowerCase().includes(query.toLowerCase()),
-      );
-      if (found.length) {
-        result.push({
-          ...suite,
-          seo_suites: found,
-        });
-      }
-    });
-
-    return result;
-  },
+  getFilteredSuites,
 );
 
 export const selectFoundSuitesWithSelectedCards = createSelector(
-  selectFoundSuiteWithCards,
+  selectSuites,
+  selectQuery,
   selectSelectedCards,
-  (suites, selectedCards) => {
-    const hash: Record<number, Suites> = {};
+  (suites, query, selectedCards) => {
+    const hash: Record<number, SuiteInStore> = {};
 
     selectedCards.forEach((selectedCard) => {
       const [suiteIndex, cardIndex] = selectedCard.path;
@@ -57,9 +60,11 @@ export const selectFoundSuitesWithSelectedCards = createSelector(
       }
     });
 
-    return Object.entries(hash)
+    const selectedSuites = Object.entries(hash)
       .sort(([key1], [key2]) => Number(key2) - Number(key1))
       .map(([, suite]) => suite);
+
+    return getFilteredSuites(query, selectedSuites);
   },
 );
 

@@ -4,18 +4,16 @@ import Button from '@components/Button';
 import Highlighted from '@components/Highlighted';
 import Image from '@components/Image';
 import Stack from '@components/Stack';
-import { selectIfCardSelected, selectQuery } from '@features/search/search.selectors';
-import { addCardToSelected, removeCardFromSelected } from '@features/search/search.slice';
-import { Card } from '@features/search/search.types';
 import { useAppDispatch, useAppSelector } from '@src/hooks';
 
+import { selectIfCardSelected, selectQuery } from '../../search.selectors';
+import { addCardToSelected, removeCardFromSelected } from '../../search.slice';
+import { CardInStore } from '../../search.types';
 import SelectButton from '../SelectButton';
 
 import { CardImageFallback } from './CardItem.styled';
 
-interface CardItemProps extends Pick<Card, 'image' | 'name' | 'id'> {
-  path: [number, number];
-}
+type CardItemProps = Pick<CardInStore, 'image' | 'name' | 'id' | 'path'>;
 
 function CardItem({
   image, name, id, path,
@@ -27,10 +25,7 @@ function CardItem({
 
   const handleSelect = useCallback(() => {
     if (!isSelected) {
-      dispatch(addCardToSelected({
-        id,
-        path,
-      }));
+      dispatch(addCardToSelected({ id, path }));
     }
   }, [dispatch, id, isSelected, path]);
 

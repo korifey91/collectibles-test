@@ -24,13 +24,13 @@ function SuiteSection({ index, style } : SuiteSectionProps) {
     <div style={style}>
       <TextLight variant="h3">{year}</TextLight>
       <SuiteSectionContainer divider={<Divider flexItem />}>
-        {cards.map((card, cardIndex) => (
+        {cards.map((card) => (
           <CardItem
             key={card.id}
             id={card.id}
             image={card.image}
             name={card.name}
-            path={[index, cardIndex]}
+            path={card.path}
           />
         ))}
       </SuiteSectionContainer>

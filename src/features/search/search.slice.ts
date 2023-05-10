@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { getSearchQuery } from '@features/search/search.helpers';
 
-import { SearchSliceState, SelectedCard } from './search.types';
+import { GetSuitesSuccessPayload, SearchSliceState, SelectedCard } from './search.types';
 
 const searchSlice = createSlice({
   name: 'search',
@@ -28,9 +28,15 @@ const searchSlice = createSlice({
   reducers: {
     getSuitesSuccess: (
       state,
-      { payload }: PayloadAction<Pick<SearchSliceState, 'suites' | 'totalCount'>>,
+      { payload }: PayloadAction<GetSuitesSuccessPayload>,
     ) => {
-      state.suites = payload.suites;
+      state.suites = payload.suites.map((suite, suiteIndex) => ({
+        ...suite,
+        seo_suites: suite.seo_suites.map((card, cardIndex) => ({
+          ...card,
+          path: [suiteIndex, cardIndex],
+        })),
+      }));
       state.totalCount = payload.totalCount;
       state.isLoading = false;
       state.error = undefined;

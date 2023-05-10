@@ -1,1 +1,1 @@
-export { default, ColorModeContext } from './StyledThemeProvider';
+export { default } from './StyledThemeProvider';
