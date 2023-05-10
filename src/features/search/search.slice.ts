@@ -10,17 +10,27 @@ interface SearchSliceState {
   searchQuery: string;
 }
 
-const initialState = {
-  isLoading: true,
-  error: undefined,
-  suites: [],
-  totalCount: 0,
-  searchQuery: '',
-} as SearchSliceState;
-
 const searchSlice = createSlice({
   name: 'search',
-  initialState,
+  initialState: () => {
+    const initialState = {
+      isLoading: true,
+      error: undefined,
+      suites: [],
+      totalCount: 0,
+      searchQuery: '',
+    } as SearchSliceState;
+
+    if (global.location) {
+      const searchParams = new URLSearchParams(window.location.search);
+      const searchQuery = searchParams.get('query');
+      if (searchQuery) {
+        initialState.searchQuery = searchQuery;
+      }
+    }
+
+    return initialState;
+  },
   reducers: {
     getSuitesSuccess: (
       state,
