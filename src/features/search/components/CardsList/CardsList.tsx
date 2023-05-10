@@ -3,6 +3,8 @@ import { useUpdateEffect } from 'react-use';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeList as List } from 'react-window';
 
+import Stack from '@components/Stack';
+import Text from '@components/Text';
 import SuiteSection from '@features/search/components/SuiteSection';
 import SuiteSectionSkeleton from '@features/search/components/SuiteSectionSkeleton';
 import { useSearchResults } from '@features/search/search.hooks';
@@ -27,6 +29,14 @@ function CardsList() {
       listRef.current.resetAfterIndex(0);
     }
   }, [suites]);
+
+  if (!isLoading && suites.length === 0) {
+    return (
+      <Stack alignItems="center">
+        <Text variant="body">No results</Text>
+      </Stack>
+    );
+  }
 
   return isLoading ? <SuiteSectionSkeleton /> : (
     <AutoSizer>
