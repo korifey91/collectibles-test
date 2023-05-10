@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useCallback } from 'react';
+import React, { ChangeEventHandler, memo, useCallback } from 'react';
 
 import SearchInput from '@components/SearchInput';
 import { setQuery } from '@features/search/search.slice';
@@ -25,4 +25,4 @@ function CardsSearchInput() {
   );
 }
 
-export default CardsSearchInput;
+export default memo(CardsSearchInput);
