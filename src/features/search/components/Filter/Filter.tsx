@@ -14,7 +14,11 @@ interface FilterProps {
 
 function Filter({ value, onChange, selectedCount }: FilterProps) {
   return (
-    <Stack direction="row" divider={<Divider orientation="vertical" flexItem />} justifyContent="center">
+    <Stack
+      direction="row"
+      divider={<Divider orientation="vertical" flexItem />}
+      justifyContent="center"
+    >
       <FilterItem onClick={() => onChange(0)}>
         <Text variant={value === 0 ? 'bodySemiBold' : 'body'}>All</Text>
       </FilterItem>
