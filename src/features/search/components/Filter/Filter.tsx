@@ -17,6 +17,7 @@ function Filter({ value, onChange, selectedCount }: FilterProps) {
     <Stack
       direction="row"
       divider={<Divider orientation="vertical" flexItem />}
+      margin="22px 0 12px 0"
       justifyContent="center"
     >
       <FilterItem onClick={() => onChange(0)}>
