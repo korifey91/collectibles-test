@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react';
 
+import Divider from '@components/Divider';
+import { TextLight } from '@components/Text';
 import CardItem from '@features/search/components/CardItem';
-import Divider from '@src/components/Divider';
-import { TextLight } from '@src/components/Text';
 import { useAppSelector } from '@src/hooks';
 
 import { SuiteSectionContainer } from './SuiteSection.styled';

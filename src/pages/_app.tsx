@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 
 import type { AppProps } from 'next/app';
 
-import { PageWrapper } from '@src/components/PageWrapper';
-import StyledThemeProvider from '@src/components/StyledThemeProvider';
+import { PageWrapper } from '@components/PageWrapper';
+import StyledThemeProvider from '@components/StyledThemeProvider';
 import { CssBaseline } from '@src/styles/styled';
 
 import store from '../store';

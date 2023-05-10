@@ -1,4 +1,4 @@
-import IconButton from '@src/components/IconButton';
+import IconButton from '@components/IconButton';
 import { styled } from '@src/styles/styled';
 
 export const IconButtonStyled = styled(IconButton)<{ selected: boolean }>`

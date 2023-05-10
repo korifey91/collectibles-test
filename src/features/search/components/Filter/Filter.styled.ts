@@ -1,4 +1,4 @@
-import Button from '@src/components/Button';
+import Button from '@components/Button';
 import { styled } from '@src/styles/styled';
 
 export const FilterItem = styled(Button)`

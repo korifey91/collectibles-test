@@ -1,8 +1,8 @@
 import { Divider } from '@mui/material';
 
-import Chip from '@src/components/Chip';
-import Stack from '@src/components/Stack';
-import Text from '@src/components/Text';
+import Chip from '@components/Chip';
+import Stack from '@components/Stack';
+import Text from '@components/Text';
 
 import { FilterItem } from './Filter.styled';
 

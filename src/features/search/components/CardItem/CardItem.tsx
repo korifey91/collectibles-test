@@ -1,8 +1,8 @@
+import Button from '@components/Button';
+import Image from '@components/Image';
+import Stack from '@components/Stack';
+import Text from '@components/Text';
 import { Card } from '@features/search/search.types';
-import Button from '@src/components/Button';
-import Image from '@src/components/Image';
-import Stack from '@src/components/Stack';
-import Text from '@src/components/Text';
 
 import SelectButton from '../SelectButton';
 

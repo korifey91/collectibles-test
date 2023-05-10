@@ -1,4 +1,4 @@
-import Stack from '@src/components/Stack';
+import Stack from '@components/Stack';
 import { styled } from '@src/styles/styled';
 
 export const SuiteSectionContainer = styled(Stack)`

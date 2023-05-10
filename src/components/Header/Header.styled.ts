@@ -1,4 +1,4 @@
-import Link from '@src/components/Link';
+import Link from '@components/Link';
 import { styled } from '@src/styles/styled';
 
 export const HeaderBackground = styled('div')`
