@@ -1,18 +1,25 @@
 import { Divider } from '@mui/material';
+import { memo } from 'react';
 
 import Chip from '@components/Chip';
 import Stack from '@components/Stack';
 import Text from '@components/Text';
+import { selectActiveTab, selectSelectedCardsCount } from '@features/search/search.selectors';
+import { changeActiveTab } from '@features/search/search.slice';
+import { useAppDispatch, useAppSelector } from '@src/hooks';
 
 import { FilterItem } from './Filter.styled';
 
-interface FilterProps {
-  value: number;
-  onChange(value: number): void;
-  selectedCount: number;
-}
+function Filter() {
+  const dispatch = useAppDispatch();
 
-function Filter({ value, onChange, selectedCount }: FilterProps) {
+  const activeTab = useAppSelector(selectActiveTab);
+  const selectedCount = useAppSelector(selectSelectedCardsCount);
+
+  const handleTabChange = (tab: 'all' | 'completed') => {
+    dispatch(changeActiveTab(tab));
+  };
+
   return (
     <Stack
       direction="row"
@@ -20,12 +27,12 @@ function Filter({ value, onChange, selectedCount }: FilterProps) {
       mb="10px"
       justifyContent="center"
     >
-      <FilterItem onClick={() => onChange(0)}>
-        <Text variant={value === 0 ? 'bodySemiBold' : 'body'}>All</Text>
+      <FilterItem onClick={() => handleTabChange('all')}>
+        <Text variant={activeTab === 'all' ? 'bodySemiBold' : 'body'}>All</Text>
       </FilterItem>
-      <FilterItem onClick={() => onChange(1)}>
+      <FilterItem onClick={() => handleTabChange('completed')}>
         <Stack direction="row" spacing="5px">
-          <Text variant={value === 1 ? 'bodySemiBold' : 'body'}>Selected</Text>
+          <Text variant={activeTab === 'completed' ? 'bodySemiBold' : 'body'}>Selected</Text>
           <Chip label={selectedCount} size="small" />
         </Stack>
       </FilterItem>
@@ -33,4 +40,4 @@ function Filter({ value, onChange, selectedCount }: FilterProps) {
   );
 }
 
-export default Filter;
+export default memo(Filter);

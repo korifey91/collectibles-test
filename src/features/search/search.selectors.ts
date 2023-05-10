@@ -8,6 +8,8 @@ export const selectQuery = (state: AppState) => state.search.searchQuery;
 export const selectSuites = (state: AppState) => state.search.suites;
 export const selectIsLoading = (state: AppState) => state.search.isLoading;
 export const selectSelectedCards = (state: AppState) => state.search.selectedCards;
+export const selectActiveTab = (state: AppState) => state.search.activeTab;
+export const selectSelectedCardsCount = (state: AppState) => state.search.selectedCards.length;
 
 export const selectFoundSuiteWithCards = createSelector(
   selectQuery,

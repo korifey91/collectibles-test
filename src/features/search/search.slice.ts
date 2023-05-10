@@ -48,6 +48,9 @@ const searchSlice = createSlice({
     removeCardFromSelected: (state, action: PayloadAction<number>) => {
       state.selectedCards = state.selectedCards.filter((card) => card.id !== action.payload);
     },
+    changeActiveTab: (state, action: PayloadAction<SearchSliceState['activeTab']>) => {
+      state.activeTab = action.payload;
+    },
   },
 });
 
@@ -58,4 +61,5 @@ export const {
   setQuery,
   addCardToSelected,
   removeCardFromSelected,
+  changeActiveTab,
 } = searchSlice.actions;

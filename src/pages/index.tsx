@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useState } from 'react';
 import { useMount } from 'react-use';
 
 import Header from '@components/Header';
@@ -14,8 +13,6 @@ import { useAppDispatch } from '@src/hooks';
 export default function Home() {
   const dispatch = useAppDispatch();
 
-  const [tab, setTab] = useState(0);
-
   useMount(() => {
     dispatch(search());
   });
@@ -28,7 +25,7 @@ export default function Home() {
       <Header />
       <SearchContainer maxWidth="sm">
         <CardsSearchInput />
-        <Filter value={tab} onChange={setTab} selectedCount={0} />
+        <Filter />
         <CardsList />
       </SearchContainer>
     </PageContent>
