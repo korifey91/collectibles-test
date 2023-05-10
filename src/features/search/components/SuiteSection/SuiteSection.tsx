@@ -1,18 +1,25 @@
+import { CSSProperties } from 'react';
+
 import CardItem from '@features/search/components/CardItem';
-import { Card } from '@features/search/search.types';
 import Divider from '@src/components/Divider';
 import { TextLight } from '@src/components/Text';
+import { useAppSelector } from '@src/hooks';
 
 import { SuiteSectionContainer } from './SuiteSection.styled';
 
 interface SuiteSectionProps {
-  year: number;
-  cards: Pick<Card, 'id' | 'name' | 'image' | 'is_follow'>[]
+  index: number;
+  style: CSSProperties;
 }
 
-function SuiteSection({ year, cards } : SuiteSectionProps) {
+function SuiteSection({ index, style } : SuiteSectionProps) {
+  const {
+    year,
+    seo_suites: cards,
+  } = useAppSelector((state) => state.search.suites[index]);
+
   return (
-    <div>
+    <div style={style}>
       <TextLight variant="h3">{year}</TextLight>
       <SuiteSectionContainer divider={<Divider flexItem />}>
         {cards.map((card) => (
