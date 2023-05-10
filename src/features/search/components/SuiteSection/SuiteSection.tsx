@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 import Divider from '@components/Divider';
 import { TextLight } from '@components/Text';
 import CardItem from '@features/search/components/CardItem';
+import { getFoundSuiteWithCards } from '@features/search/search.selectors';
 import { useAppSelector } from '@src/hooks';
 
 import { SuiteSectionContainer } from './SuiteSection.styled';
@@ -13,10 +14,11 @@ interface SuiteSectionProps {
 }
 
 function SuiteSection({ index, style } : SuiteSectionProps) {
+  const filteredSuites = useAppSelector(getFoundSuiteWithCards);
   const {
     year,
     seo_suites: cards,
-  } = useAppSelector((state) => state.search.suites[index]);
+  } = filteredSuites[index];
 
   return (
     <div style={style}>
