@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import Divider from '@components/Divider';
 import { TextLight } from '@components/Text';
 import CardItem from '@features/search/components/CardItem';
-import { getFoundSuiteWithCards } from '@features/search/search.selectors';
+import { selectFoundSuiteWithCards } from '@features/search/search.selectors';
 import { useAppSelector } from '@src/hooks';
 
 import { SuiteSectionContainer } from './SuiteSection.styled';
@@ -14,7 +14,7 @@ interface SuiteSectionProps {
 }
 
 function SuiteSection({ index, style } : SuiteSectionProps) {
-  const filteredSuites = useAppSelector(getFoundSuiteWithCards);
+  const filteredSuites = useAppSelector(selectFoundSuiteWithCards);
   const {
     year,
     seo_suites: cards,
@@ -27,8 +27,8 @@ function SuiteSection({ index, style } : SuiteSectionProps) {
         {cards.map((card) => (
           <CardItem
             key={card.id}
+            id={card.id}
             image={card.image}
-            is_follow={card.is_follow}
             name={card.name}
           />
         ))}

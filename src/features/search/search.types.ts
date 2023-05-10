@@ -13,3 +13,18 @@ export interface Suites {
   'year':number;
   'seo_suites': Card[];
 }
+
+export interface SelectedCard {
+  id: number;
+  path: [number, number]; // path[0] - index of suite; path[1] - index of a card in suite
+}
+
+export interface SearchSliceState {
+  isLoading: boolean;
+  error: string | undefined;
+  suites: Suites[];
+  totalCount: number;
+  searchQuery: string;
+  selectedCards: SelectedCard[];
+  activeTab: 'all' | 'completed';
+}

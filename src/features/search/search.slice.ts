@@ -2,15 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { getSearchQuery } from '@features/search/search.helpers';
 
-import { Suites } from './search.types';
-
-interface SearchSliceState {
-  isLoading: boolean;
-  error: string | undefined;
-  suites: Suites[];
-  totalCount: number;
-  searchQuery: string;
-}
+import { SearchSliceState, SelectedCard } from './search.types';
 
 const searchSlice = createSlice({
   name: 'search',
@@ -21,6 +13,8 @@ const searchSlice = createSlice({
       suites: [],
       totalCount: 0,
       searchQuery: '',
+      selectedCards: [],
+      activeTab: 'all',
     } as SearchSliceState;
 
     const initialQuery = getSearchQuery();
@@ -48,6 +42,12 @@ const searchSlice = createSlice({
     setQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
     },
+    addCardToSelected: (state, action: PayloadAction<SelectedCard>) => {
+      state.selectedCards.push(action.payload);
+    },
+    removeCardFromSelected: (state, action: PayloadAction<number>) => {
+      state.selectedCards = state.selectedCards.filter((card) => card.id !== action.payload);
+    },
   },
 });
 
@@ -56,4 +56,6 @@ export const {
   getSuitesSuccess,
   getSuitesError,
   setQuery,
+  addCardToSelected,
+  removeCardFromSelected,
 } = searchSlice.actions;

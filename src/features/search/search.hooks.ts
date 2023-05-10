@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 
-import { getFoundSuiteWithCards, getIsLoading } from '@features/search/search.selectors';
+import { selectFoundSuiteWithCards, selectIsLoading } from '@features/search/search.selectors';
 import { useAppSelector } from '@src/hooks';
 
 export function useSearchResults() {
-  const suites = useAppSelector(getFoundSuiteWithCards);
-  const isLoading = useAppSelector(getIsLoading);
+  const suites = useAppSelector(selectFoundSuiteWithCards);
+  const isLoading = useAppSelector(selectIsLoading);
 
   return useMemo(() => ({
     data: suites,

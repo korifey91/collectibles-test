@@ -4,13 +4,14 @@ import { AppState } from '@src/store';
 
 import { Suites } from './search.types';
 
-export const getQuery = (state: AppState) => state.search.searchQuery;
-export const getSuites = (state: AppState) => state.search.suites;
-export const getIsLoading = (state: AppState) => state.search.isLoading;
+export const selectQuery = (state: AppState) => state.search.searchQuery;
+export const selectSuites = (state: AppState) => state.search.suites;
+export const selectIsLoading = (state: AppState) => state.search.isLoading;
+export const selectSelectedCards = (state: AppState) => state.search.selectedCards;
 
-export const getFoundSuiteWithCards = createSelector(
-  getQuery,
-  getSuites,
+export const selectFoundSuiteWithCards = createSelector(
+  selectQuery,
+  selectSuites,
   (query, suites) => {
     if (!query.length) return suites;
 
@@ -30,4 +31,10 @@ export const getFoundSuiteWithCards = createSelector(
 
     return result;
   },
+);
+
+export const selectIfCardSelected = createSelector(
+  selectSelectedCards,
+  (state: AppState, id: number) => id,
+  (selectedCards, id) => selectedCards.some((card) => card.id === id),
 );
