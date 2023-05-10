@@ -2,8 +2,9 @@ import { CSSProperties } from 'react';
 
 import Divider from '@components/Divider';
 import { TextLight } from '@components/Text';
-import CardItem from '@features/search/components/CardItem';
-import { useSearchResults } from '@features/search/search.hooks';
+
+import { useSearchResults } from '../../search.hooks';
+import CardItem from '../CardItem';
 
 import { SuiteSectionContainer } from './SuiteSection.styled';
 

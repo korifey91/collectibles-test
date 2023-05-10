@@ -5,9 +5,10 @@ import { VariableSizeList as List } from 'react-window';
 
 import Stack from '@components/Stack';
 import Text from '@components/Text';
-import SuiteSection from '@features/search/components/SuiteSection';
-import SuiteSectionSkeleton from '@features/search/components/SuiteSectionSkeleton';
-import { useSearchResults } from '@features/search/search.hooks';
+
+import { useSearchResults } from '../../search.hooks';
+import SuiteSection from '../SuiteSection';
+import SuiteSectionSkeleton from '../SuiteSectionSkeleton';
 
 const TITLE_HEIGHT = 36;
 const CARD_HEIGHT = 152;

@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 
+import { useAppSelector } from '@src/hooks';
+
 import {
   selectFilteredSuites,
   selectIsLoading,
-} from '@features/search/search.selectors';
-import { useAppSelector } from '@src/hooks';
+} from './search.selectors';
 
 export function useSearchResults() {
   const suites = useAppSelector(selectFilteredSuites);

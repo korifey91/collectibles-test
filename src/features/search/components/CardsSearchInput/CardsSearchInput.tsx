@@ -5,9 +5,10 @@ import React, {
 import { useUpdateEffect } from 'react-use';
 
 import SearchInput from '@components/SearchInput';
-import { getSearchQuery } from '@features/search/search.helpers';
-import { setQuery as setStoreQuery } from '@features/search/search.slice';
 import { useAppDispatch } from '@src/hooks';
+
+import { getSearchQuery } from '../../search.helpers';
+import { setQuery as setStoreQuery } from '../../search.slice';
 
 import {
   CardsSearchInputContainer,

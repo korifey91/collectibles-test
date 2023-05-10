@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { getSearchQuery } from '@features/search/search.helpers';
-
+import { getSearchQuery } from './search.helpers';
 import { GetSuitesSuccessPayload, SearchSliceState, SelectedCard } from './search.types';
 
 const searchSlice = createSlice({

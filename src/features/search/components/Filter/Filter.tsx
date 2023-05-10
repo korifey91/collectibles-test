@@ -4,9 +4,10 @@ import { memo } from 'react';
 import Chip from '@components/Chip';
 import Stack from '@components/Stack';
 import Text from '@components/Text';
-import { selectActiveTab, selectSelectedCardsCount } from '@features/search/search.selectors';
-import { changeActiveTab } from '@features/search/search.slice';
 import { useAppDispatch, useAppSelector } from '@src/hooks';
+
+import { selectActiveTab, selectSelectedCardsCount } from '../../search.selectors';
+import { changeActiveTab } from '../../search.slice';
 
 import { FilterItem } from './Filter.styled';
 
