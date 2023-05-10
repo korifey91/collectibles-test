@@ -26,11 +26,13 @@ function CardItem({
   const isSelected = useAppSelector((state) => selectIfCardSelected(state, id));
 
   const handleSelect = useCallback(() => {
-    dispatch(addCardToSelected({
-      id,
-      path,
-    }));
-  }, [dispatch, id, path]);
+    if (!isSelected) {
+      dispatch(addCardToSelected({
+        id,
+        path,
+      }));
+    }
+  }, [dispatch, id, isSelected, path]);
 
   const handleDeselect = useCallback(() => {
     dispatch(removeCardFromSelected(id));
