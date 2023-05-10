@@ -3,18 +3,20 @@ import { useMount } from 'react-use';
 
 import Header from '@components/Header';
 import { PageContent } from '@components/PageWrapper';
-import CardsList from '@features/search/components/CardsList';
-import CardsSearchInput from '@features/search/components/CardsSearchInput';
-import Filter from '@features/search/components/Filter';
-import SearchContainer from '@features/search/components/SearchContainer';
-import { search } from '@features/search/search.actions';
+import {
+  CardsList,
+  Filter,
+  SearchContainer,
+  CardsSearchInput,
+  searchAction,
+} from '@features/search';
 import { useAppDispatch } from '@src/hooks';
 
 export default function Home() {
   const dispatch = useAppDispatch();
 
   useMount(() => {
-    dispatch(search());
+    dispatch(searchAction());
   });
 
   return (
