@@ -7,6 +7,7 @@ interface SearchSliceState {
   error: string | undefined;
   suites: Suites[];
   totalCount: number;
+  searchQuery: string;
 }
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
   error: undefined,
   suites: [],
   totalCount: 0,
+  searchQuery: '',
 } as SearchSliceState;
 
 const searchSlice = createSlice({
@@ -33,6 +35,9 @@ const searchSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    setQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
@@ -40,4 +45,5 @@ export default searchSlice.reducer;
 export const {
   getSuitesSuccess,
   getSuitesError,
+  setQuery,
 } = searchSlice.actions;
