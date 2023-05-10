@@ -4,8 +4,8 @@ import { AppState } from '@src/store';
 
 import { Suites } from './search.types';
 
-const getQuery = (state: AppState) => state.search.searchQuery;
-const getSuites = (state: AppState) => state.search.suites;
+export const getQuery = (state: AppState) => state.search.searchQuery;
+export const getSuites = (state: AppState) => state.search.suites;
 
 export const getFoundSuiteWithCards = createSelector(
   getQuery,
