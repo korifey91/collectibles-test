@@ -22,6 +22,9 @@
       "@features/*": [
         "features/*"
       ],
+      "@components/*": [
+        "components/*"
+      ],
       "@src/*": ["./*"]
     }
   },
