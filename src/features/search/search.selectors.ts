@@ -6,6 +6,7 @@ import { Suites } from './search.types';
 
 export const getQuery = (state: AppState) => state.search.searchQuery;
 export const getSuites = (state: AppState) => state.search.suites;
+export const getIsLoading = (state: AppState) => state.search.isLoading;
 
 export const getFoundSuiteWithCards = createSelector(
   getQuery,
