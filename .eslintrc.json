@@ -2,7 +2,7 @@
   "extends": [
     "next/core-web-vitals",
     "airbnb",
-    "airbnb-typescript/base",
+    "airbnb-typescript",
     "airbnb/hooks"
   ],
   "parserOptions": {
@@ -33,6 +33,7 @@
     }],
     "no-restricted-exports": "off",
     "react/require-default-props": "off",
+    "max-len": [1, { "code": 100 }],
     "import/order": [
       "error",
       {

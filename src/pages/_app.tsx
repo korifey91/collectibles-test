@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import type { AppProps } from 'next/app';
 
+import { PageWrapper } from '@src/components/PageWrapper';
 import StyledThemeProvider from '@src/components/StyledThemeProvider';
 import { CssBaseline } from '@src/styles/styled';
 
@@ -22,9 +23,9 @@ export default function App({
     <Provider store={store}>
       <StyledThemeProvider>
         <CssBaseline />
-        <main className={inter.className}>
+        <PageWrapper className={inter.className}>
           <Component {...pageProps} />
-        </main>
+        </PageWrapper>
       </StyledThemeProvider>
     </Provider>
   );

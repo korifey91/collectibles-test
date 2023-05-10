@@ -9,6 +9,7 @@ export const HeaderBackground = styled('div')`
 
 export const LogoLink = styled(Link)`
   position: absolute;
-  top: 24.74%;
-  left: 45.2%;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
 `;
