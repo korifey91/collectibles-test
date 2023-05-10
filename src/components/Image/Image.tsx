@@ -1,16 +1,18 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 
 import { styled } from '@src/styles/styled';
 
-import { DefaultImage, ImageWithDefault } from './Image.styled';
+import { ImageWithDefault } from './Image.styled';
 import { ImageProps } from './Image.types';
 
-function Image({ src, ...props }: ImageProps) {
+function Image({ src, fallback: FallbackElement, ...props }: ImageProps) {
   const [fallback, setFallback] = useState(false);
 
   const onImageLoadError = useCallback(() => setFallback(true), []);
 
-  return fallback || !src ? <DefaultImage /> : (
+  const showFallback = (fallback || !src) && FallbackElement;
+
+  return showFallback ? FallbackElement : (
     <ImageWithDefault
       {...props}
       src={src}
@@ -19,4 +21,4 @@ function Image({ src, ...props }: ImageProps) {
   );
 }
 
-export default styled(Image)``;
+export default styled(memo(Image))``;

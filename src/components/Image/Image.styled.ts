@@ -1,4 +1,3 @@
-import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import NextImage from 'next/image';
 
 import { css, styled } from '@src/styles/styled';
@@ -10,8 +9,4 @@ export const ImageWithDefault = styled(NextImage)<ImageProps>`
     && css`
       object-fit: ${objectFit};
     `}
-`;
-
-export const DefaultImage = styled(ImageOutlinedIcon)`
-  font-size: 8em;
 `;
