@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import CollectbaseLogo from '@public/collectbase-logo.svg';
 
@@ -12,4 +12,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default memo(Header);
