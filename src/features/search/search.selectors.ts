@@ -35,6 +35,45 @@ export const selectFoundSuiteWithCards = createSelector(
   },
 );
 
+export const selectFoundSuitesWithSelectedCards = createSelector(
+  selectFoundSuiteWithCards,
+  selectSelectedCards,
+  (suites, selectedCards) => {
+    const hash: Record<number, Suites> = {};
+
+    selectedCards.forEach((selectedCard) => {
+      const [suiteIndex, cardIndex] = selectedCard.path;
+      const suite = suites[suiteIndex];
+
+      const card = suites[suiteIndex].seo_suites[cardIndex];
+
+      if (hash[suite.year]) {
+        hash[suite.year].seo_suites.push(card);
+      } else {
+        hash[suite.year] = {
+          ...suite,
+          seo_suites: [card],
+        };
+      }
+    });
+
+    return Object.entries(hash)
+      .sort(([key1], [key2]) => Number(key2) - Number(key1))
+      .map(([, suite]) => suite);
+  },
+);
+
+export const selectFilteredSuites = createSelector(
+  selectFoundSuiteWithCards,
+  selectFoundSuitesWithSelectedCards,
+  selectActiveTab,
+  (
+    foundSuites,
+    selectedFoundSuites,
+    activeTab,
+  ) => (activeTab === 'all' ? foundSuites : selectedFoundSuites),
+);
+
 export const selectIfCardSelected = createSelector(
   selectSelectedCards,
   (state: AppState, id: number) => id,
