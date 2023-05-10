@@ -8,6 +8,8 @@ import { useAppSelector } from '@src/hooks';
 
 import SelectButton from '../SelectButton';
 
+import { CardImageFallback } from './CardItem.styled';
+
 type CardItemProps = Pick<Card, 'image' | 'name' | 'is_follow'>;
 
 function CardItem({ image, name, is_follow }: CardItemProps) {
@@ -15,7 +17,14 @@ function CardItem({ image, name, is_follow }: CardItemProps) {
 
   return (
     <Stack direction="row" padding="24px 24px 24px 15px" spacing="6px" maxHeight={152}>
-      <Image src={image ?? ''} alt="card-image" width={118} height={118} objectFit="contain" />
+      <Image
+        src={image ?? ''}
+        fallback={<CardImageFallback />}
+        alt="card-image"
+        width={118}
+        height={118}
+        objectFit="contain"
+      />
       <Stack justifyContent="space-between" flexGrow={1}>
         <Highlighted variant="headline" maxWidth="80%" highlight={query} text={name} />
         <Stack direction="row" spacing={1} alignItems="flex-start">
