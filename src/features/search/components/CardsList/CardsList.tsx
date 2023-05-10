@@ -4,8 +4,8 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeList as List } from 'react-window';
 
 import SuiteSection from '@features/search/components/SuiteSection';
-import { getFoundSuiteWithCards } from '@features/search/search.selectors';
-import { useAppSelector } from '@src/hooks';
+import SuiteSectionSkeleton from '@features/search/components/SuiteSectionSkeleton';
+import { useSearchResults } from '@features/search/search.hooks';
 
 const TITLE_HEIGHT = 36;
 const CARD_HEIGHT = 152;
@@ -15,7 +15,7 @@ const BORDER_HEIGHT = 1;
 function CardsList() {
   const listRef = useRef<List>(null);
 
-  const suites = useAppSelector(getFoundSuiteWithCards);
+  const { data: suites, isLoading } = useSearchResults();
 
   const getItemSize = (index: number) => TITLE_HEIGHT
     + suites[index].seo_suites.length * CARD_HEIGHT
@@ -28,7 +28,7 @@ function CardsList() {
     }
   }, [suites]);
 
-  return (
+  return isLoading ? <SuiteSectionSkeleton /> : (
     <AutoSizer>
       {({ height, width }) => (
         <List
